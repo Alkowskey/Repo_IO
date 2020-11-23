@@ -1,0 +1,24 @@
+==== Client ====
+
+UI client - Front end aplikacji, w którym bêdzie mo¿na znaleŸæ kolejne rozszerzenia funkcjonalnoœci
+Make a reservation - tworzy rezerwacje
+Remove a reservation - usuwa rezerwacje
+Book a flight - zamawia/kupuje lot
+Submit a ticket - Wysy³a wiadomoœæ do oddzia³u wsparcia
+
+==== Moderator ====
+
+Add a flight - dodaje lot do puli mo¿liwych do zarezerowania
+Remove or update flight - Usuwa lub edytuje lot
+Add carrier - dodaje przewoŸnika
+remove carrier - usuwa przewoŸnika
+Add client - rejestruje klienta
+Remove or update client - usuwa lub edytuje klienta
+Review a ticket - przegl¹da wiadomoœci od najstarszych
+
+==================
+
+Na podstawie powyy¿szych funkcjonalnoœci zostanie wprowadzony system poœredni wykorzystuj¹cy
+z nich dane. Mowa o systemie podpowiadania lotów który bêdzie czerpa³ jednoczeœnie z funkcjonalnoœci Clienta i 
+Moderatora tj. "Make  a reservation" w celu zebrania danych o preferencjach klienta, Add/Remove ticket
+w celu ustalenia jakie mo¿emy zaproponowaæ opcje lotów klientowi
