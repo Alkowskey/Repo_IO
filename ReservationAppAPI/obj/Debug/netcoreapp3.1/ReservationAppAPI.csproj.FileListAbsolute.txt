@@ -31,3 +31,11 @@ C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\bin\Debug\netcoreapp3.1\System.
 C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\obj\Debug\netcoreapp3.1\ReservationAppAPI.csproj.CopyComplete
 C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\bin\Debug\netcoreapp3.1\Npgsql.dll
+C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\obj\Debug\netcoreapp3.1\ReservationAppAPI.csproj.CoreCompileInputs.cache
+C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\obj\Debug\netcoreapp3.1\ReservationAppAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\bin\Debug\netcoreapp3.1\Humanizer.dll
+C:\Users\Aleksander\Desktop\ff\ReservationAppAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll

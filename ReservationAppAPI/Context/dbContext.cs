@@ -1,19 +1,23 @@
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
 
-// W projektach w stylu zestawu SDK, takich jak ten, kilka atrybutów zestawu, kiedyś
-// definiowanych w tym pliku, jest teraz automatycznie dodawanych podczas kompilacji
-// i wypełnianych wartościami zdefiniowanymi we właściwościach projektu. Aby uzyskać
-// szczegółowe informacje o tym, które atrybuty są dołączane i jak dostosować ten
-// proces, zobacz: https://aka.ms/assembly-info-properties
+using ReservationAppAPI.Models;
 
 
-// Ustawienie atrybutu ComVisible na wartość false sprawia, że typy w tym zestawie
-// nie są widoczne dla składników modelu COM. Jeśli chcesz uzyskać dostęp do typu
-// w tym zestawie z modelu COM, ustaw w tym typie atrybut ComVisible na wartość true.
 
-[assembly: ComVisible(false)]
+namespace ReservationAppAPI.Context
+{
+    public class ReservationContext : DbContext
+    {
+        public DbSet<Person> People { get; set; }
 
-// Następujący identyfikator GUID jest identyfikatorem elementu typelib w przypadku
-// udostępnienia tego projektu w modelu COM.
+        public ReservationContext(DbContextOptions<ReservationContext> options) : base(options)
+        {
 
-[assembly: Guid("1de7a5da-ede4-4771-b4f0-3aa6e2082722")]
+        }
+
+        public DbSet<Person> GetPeople() => People;
+    }
+}

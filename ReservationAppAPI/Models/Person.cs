@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ReservationAppAPI.Models
 {
-    [Owned]
-    public class User
+    //[Owned]
+    public class Person
     {
 
         [Required]
-        public long UserId { get; set; }
+        public long PersonId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
