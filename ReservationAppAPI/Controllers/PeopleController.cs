@@ -30,5 +30,30 @@ namespace ReservationAppAPI.Controllers
         {
             return _reservationContext.GetPeople();
         }
+        [HttpGet("{id}")]
+        public Person Get(long id)
+        {
+            return _reservationContext.GetPerson(id);
+        }
+        [HttpDelete("{id}")]
+        public bool DeletePerson(long id)
+        {
+            return _reservationContext.DeletePerson(id);
+        }
+
+        [HttpPost]
+        public Person addUser(Person person)
+        {
+            return _reservationContext.addPerson(person);
+        }
+
+        /*[HttpPost("toRoom")]
+        public User addUserToRoom([FromBody] UserToRoom userToRoom)
+        {
+            User user = userToRoom.User;
+            Room room = userToRoom.Room;
+            return _dbContext.addUserToRoom(user, room);
+        }*/
+
     }
 }

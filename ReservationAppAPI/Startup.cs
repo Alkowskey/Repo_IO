@@ -6,14 +6,21 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+
 
 using Microsoft.EntityFrameworkCore;
 
 using ReservationAppAPI.Context;
+
+using System.Buffers;
+
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace ReservationAppAPI
 {
@@ -30,6 +37,7 @@ namespace ReservationAppAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddDbContext<ReservationContext>(options => options.UseNpgsql(Configuration.GetConnectionString("ResAppConnection")));
         }
 
