@@ -8,7 +8,6 @@ namespace ReservationAppAPI.Models
     //[Owned]
     public class Person
     {
-
         [Required]
         public long PersonId { get; set; }
         [Required]
