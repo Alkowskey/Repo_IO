@@ -13,7 +13,7 @@ namespace ReservationAppAPI.Models
         public long CustomerId { get; set; }
         [Required]
         public string Address { get; set; }
-        public List<Reservation> Flights { get; set; }
+        public List<Reservation> Reservations { get; set; }
         public List<Ticket> Ticekts { get; set; }
         public double Balance { get; set; }
 
