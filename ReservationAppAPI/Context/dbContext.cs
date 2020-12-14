@@ -13,6 +13,7 @@ namespace ReservationAppAPI.Context
         public DbSet<Person> People { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Flight> Flights { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
 
         public ReservationContext(DbContextOptions<ReservationContext> options) : base(options)
         {
@@ -48,6 +49,38 @@ namespace ReservationAppAPI.Context
 
             return true;
         }
+        internal IEnumerable<Ticket> GetTickets() => Tickets;
+        internal Ticket GetTicket(long id)
+        {
+            return Tickets.Include(t => t.Customer).FirstOrDefault(t => t.TicketId == id);
+        }
+
+
+        internal Ticket addTicket(Ticket ticket)
+        {
+            Tickets.Add(ticket);
+            this.SaveChanges();
+            return ticket;
+        }
+
+        internal bool DeleteTicket(long id)
+        {
+            Ticket t = Tickets.FirstOrDefault(t => t.TicketId == id);
+            try
+            {
+                Tickets.Remove(t);
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+
+            }
+
+            this.SaveChanges();
+
+            return true;
+        }
+
         //Flights
         internal IEnumerable<Flight> GetFlights()
         {

@@ -13,38 +13,38 @@ namespace ReservationAppAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FlightsController : ControllerBase
+    public class TicketsController : ControllerBase
     {
 
         private readonly ILogger<ReservationContext> _logger;
         private readonly ReservationContext _reservationContext;
 
-        public FlightsController(ILogger<ReservationContext> logger, ReservationContext reservationContext)
+        public TicketsController(ILogger<ReservationContext> logger, ReservationContext reservationContext)
         {
             _logger = logger;
             _reservationContext = reservationContext;
         }
 
         [HttpGet]
-        public IEnumerable<Flight> Get()
+        public IEnumerable<Ticket> Get()
         {
-            return _reservationContext.GetFlights();
+            return _reservationContext.GetTickets();
         }
         [HttpGet("{id}")]
-        public Flight Get(long id)
+        public Ticket Get(long id)
         {
-            return _reservationContext.GetFlight(id);
+            return _reservationContext.GetTicket(id);
         }
         [HttpDelete("{id}")]
-        public bool DeleteFlight(long id)
+        public bool DeleteTicket(long id)
         {
-            return _reservationContext.DeleteFlight(id);
+            return _reservationContext.DeleteTicket(id);
         }
 
         [HttpPost]
-        public Flight addFlight(Flight flight)
+        public Ticket addCustomer(Ticket ticket)
         {
-            return _reservationContext.addFlight(flight);
+            return _reservationContext.addTicket(ticket);
         }
 
 
