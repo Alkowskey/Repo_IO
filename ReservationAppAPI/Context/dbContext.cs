@@ -12,6 +12,7 @@ namespace ReservationAppAPI.Context
     {
         public DbSet<Person> People { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Flight> Flights { get; set; }
 
         public ReservationContext(DbContextOptions<ReservationContext> options) : base(options)
         {
@@ -47,6 +48,41 @@ namespace ReservationAppAPI.Context
 
             return true;
         }
+        //Flights
+        internal IEnumerable<Flight> GetFlights()
+        {
+            return Flights;
+        }
+        internal Flight addFlight(Flight flight)
+        {
+            Flights.Add(flight);
+            this.SaveChanges();
+            return flight;
+        }
+
+        internal bool DeleteFlight(long id)
+        {
+            Flight f = Flights.FirstOrDefault(f => f.FlightId == id);
+            try
+            {
+                Flights.Remove(f);
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+
+            }
+
+            this.SaveChanges();
+
+            return true;
+        }
+
+        internal Flight GetFlight(long id)
+        {
+            return Flights.FirstOrDefault(f => f.FlightId == id);
+        }
+
         //Customers
 
         public IEnumerable<Person> GetCustomers()
@@ -68,11 +104,20 @@ namespace ReservationAppAPI.Context
 
         public bool DeleteCustomer(long id)
         {
-            Customer temp = Customers.FirstOrDefault(C => C.CustomerId == id);
-            if(temp!=null)
-                Customers.Remove(temp);
+            Customer c = Customers.FirstOrDefault(c =>c.CustomerId == id);
+            try
+            {
+                Customers.Remove(c);
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+
+            }
+
             this.SaveChanges();
-            throw new NotImplementedException();
+
+            return true;
         }
     }
 }
