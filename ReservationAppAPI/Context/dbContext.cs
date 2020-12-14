@@ -49,24 +49,24 @@ namespace ReservationAppAPI.Context
         }
         //Customers
 
-        internal IEnumerable<Person> GetCustomers()
+        public IEnumerable<Person> GetCustomers()
         {
             return Customers;
         }
 
-        internal Person GetCustomer(long id)
+        public Person GetCustomer(long id)
         {
             return Customers.Include(c => c.Reservations).ThenInclude(r => r.Flight).FirstOrDefault(c => c.CustomerId == id);
         }
 
-        internal Customer addCustomer(Customer customer)
+        public Customer addCustomer(Customer customer)
         {
             Customers.Add(customer);
             this.SaveChanges();
             return customer;
         }
 
-        internal bool DeleteCustomer(long id)
+        public bool DeleteCustomer(long id)
         {
             Customer temp = Customers.FirstOrDefault(C => C.CustomerId == id);
             if(temp!=null)

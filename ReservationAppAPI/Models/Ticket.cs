@@ -9,7 +9,7 @@ namespace ReservationAppAPI.Models
     public class Ticket
     {
         [Required]
-        public long TicektId { get; set; }
+        public long TicketId { get; set; }
         [Required]
         public string Message { get; set; }
 
