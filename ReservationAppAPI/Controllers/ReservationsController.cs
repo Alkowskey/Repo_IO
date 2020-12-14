@@ -9,44 +9,42 @@ using ReservationAppAPI.Context;
 
 using ReservationAppAPI.Models;
 
-using ReservationAppAPI.Serializers;
-
 namespace ReservationAppAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TicketsController : ControllerBase
+    public class ReservationsController : ControllerBase
     {
 
         private readonly ILogger<ReservationContext> _logger;
         private readonly ReservationContext _reservationContext;
 
-        public TicketsController(ILogger<ReservationContext> logger, ReservationContext reservationContext)
+        public ReservationsController(ILogger<ReservationContext> logger, ReservationContext reservationContext)
         {
             _logger = logger;
             _reservationContext = reservationContext;
         }
 
         [HttpGet]
-        public IEnumerable<Ticket> Get()
+        public IEnumerable<Reservation> Get()
         {
-            return _reservationContext.GetTickets();
+            return _reservationContext.GetReservations();
         }
         [HttpGet("{id}")]
-        public Ticket Get(long id)
+        public Reservation Get(long id)
         {
-            return _reservationContext.GetTicket(id);
+            return _reservationContext.GetReservation(id);
         }
         [HttpDelete("{id}")]
-        public bool DeleteTicket(long id)
+        public bool DeleteReservation(long id)
         {
-            return _reservationContext.DeleteTicket(id);
+            return _reservationContext.DeleteReservation(id);
         }
 
         [HttpPost]
-        public Ticket addTicket(TicketSerializer ticket)
+        public Reservation addReservation(Reservation reservation)
         {
-            return _reservationContext.addTicket(ticket);
+            return _reservationContext.addReservation(reservation);
         }
 
 

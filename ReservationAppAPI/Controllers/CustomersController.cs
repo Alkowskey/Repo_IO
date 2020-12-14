@@ -26,12 +26,12 @@ namespace ReservationAppAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Person> Get()
+        public IEnumerable<Customer> Get()
         {
             return _reservationContext.GetCustomers();
         }
         [HttpGet("{id}")]
-        public Person Get(long id)
+        public Customer Get(long id)
         {
             return _reservationContext.GetCustomer(id);
         }
@@ -42,7 +42,7 @@ namespace ReservationAppAPI.Controllers
         }
 
         [HttpPost]
-        public Person addCustomer(Customer customer)
+        public Customer addCustomer(Customer customer)
         {
             return _reservationContext.addCustomer(customer);
         }

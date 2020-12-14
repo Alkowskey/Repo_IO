@@ -4,6 +4,7 @@ using System.Data;
 using Microsoft.EntityFrameworkCore;
 
 using ReservationAppAPI.Models;
+using ReservationAppAPI.Serializers;
 using System;
 
 namespace ReservationAppAPI.Context
@@ -14,6 +15,7 @@ namespace ReservationAppAPI.Context
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         public ReservationContext(DbContextOptions<ReservationContext> options) : base(options)
         {
@@ -29,9 +31,43 @@ namespace ReservationAppAPI.Context
             return person;
         }
 
+
         public Person GetPerson(long id)
         {
             return People.FirstOrDefault(p => p.PersonId == id);
+        }
+        //Reservations
+        internal IEnumerable<Reservation> GetReservations()
+        {
+            return Reservations.Include(r=>r.Flight);
+        }
+
+        internal Reservation GetReservation(long id)
+        {
+            return Reservations.Include(r => r.Flight).FirstOrDefault(r => r.ReservationId == id);
+        }
+
+        internal bool DeleteReservation(long id)
+        {
+            Reservation r = GetReservation(id);
+            try
+            {
+                Reservations.Remove(r);
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+
+            }
+
+            this.SaveChanges();
+
+            return true;
+        }
+
+        internal Reservation addReservation(Reservation reservation)
+        {
+            throw new NotImplementedException();
         }
 
         public bool DeletePerson(long id)
@@ -56,11 +92,14 @@ namespace ReservationAppAPI.Context
         }
 
 
-        internal Ticket addTicket(Ticket ticket)
+        internal Ticket addTicket(TicketSerializer ticket)
         {
-            Tickets.Add(ticket);
+            Customer c = GetCustomer(ticket.CId);
+            Reservation r = null; // Just for now
+            Ticket t = new Ticket(ticket, c, r);
+            Tickets.Add(t);
             this.SaveChanges();
-            return ticket;
+            return t;
         }
 
         internal bool DeleteTicket(long id)
@@ -118,12 +157,12 @@ namespace ReservationAppAPI.Context
 
         //Customers
 
-        public IEnumerable<Person> GetCustomers()
+        public IEnumerable<Customer> GetCustomers()
         {
             return Customers;
         }
 
-        public Person GetCustomer(long id)
+        public Customer GetCustomer(long id)
         {
             return Customers.Include(c => c.Reservations).ThenInclude(r => r.Flight).FirstOrDefault(c => c.CustomerId == id);
         }
